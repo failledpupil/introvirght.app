@@ -2,12 +2,12 @@ import React from 'react';
 import { cn } from '../../utils/cn';
 import { useVAPITheme } from '../../hooks/useVAPITheme';
 import { isVAPIThemeActive } from '../../utils/vapiThemeUtils';
-import logoIconLight from '../../assets/branding/introvirght-modern-icon.svg';
-import logoIconDark from '../../assets/branding/introvirght-modern-icon-dark.svg';
-import logoWordmarkLight from '../../assets/branding/introvirght-modern-wordmark.svg';
-import logoWordmarkDark from '../../assets/branding/introvirght-modern-wordmark-dark.svg';
-import logoFullLight from '../../assets/branding/introvirght-modern-full.svg';
-import logoFullDark from '../../assets/branding/introvirght-modern-full-dark.svg';
+import logoIconLight from '../../assets/branding/brain-logo.png';
+import logoIconDark from '../../assets/branding/brain-logo.png';
+import logoWordmarkLight from '../../assets/branding/brain-logo.png';
+import logoWordmarkDark from '../../assets/branding/brain-logo.png';
+import logoFullLight from '../../assets/branding/brain-logo.png';
+import logoFullDark from '../../assets/branding/brain-logo.png';
 
 export interface LogoProps {
   variant?: 'full' | 'icon' | 'wordmark';
@@ -18,11 +18,11 @@ export interface LogoProps {
 }
 
 const sizeMap = {
-  xs: { icon: 'h-10 w-10', wordmark: 'h-8 w-auto', full: 'h-10 w-auto' },
-  sm: { icon: 'h-14 w-14', wordmark: 'h-10 w-auto', full: 'h-14 w-auto' },
-  md: { icon: 'h-16 w-16', wordmark: 'h-12 w-auto', full: 'h-16 w-auto' },
-  lg: { icon: 'h-20 w-20', wordmark: 'h-16 w-auto', full: 'h-20 w-auto' },
-  xl: { icon: 'h-28 w-28', wordmark: 'h-20 w-auto', full: 'h-24 w-auto' },
+  xs: { icon: 'h-12 w-12', wordmark: 'h-8 w-auto', full: 'h-12 w-auto' },
+  sm: { icon: 'h-16 w-16', wordmark: 'h-12 w-auto', full: 'h-16 w-auto' },
+  md: { icon: 'h-20 w-20', wordmark: 'h-16 w-auto', full: 'h-20 w-auto' },
+  lg: { icon: 'h-24 w-24', wordmark: 'h-20 w-auto', full: 'h-24 w-auto' },
+  xl: { icon: 'h-32 w-32', wordmark: 'h-24 w-auto', full: 'h-32 w-auto' },
 };
 
 export const Logo: React.FC<LogoProps> = ({
@@ -89,10 +89,12 @@ export const Logo: React.FC<LogoProps> = ({
   const logoSrc = getLogoSrc();
   const sizeClass = sizeMap[size][variant];
 
+  // Use the complete logo PNG for all variants - it's already perfectly designed
   return (
     <div className={cn(
-      'logo-container relative inline-flex items-center justify-center',
-      animated && 'group cursor-pointer',
+      'logo-container relative flex items-center justify-start w-full',
+      'px-2 py-1', // Add proper padding
+      animated && 'transition-all duration-300 ease-out hover:scale-105',
       className
     )}>
       <img
@@ -100,33 +102,23 @@ export const Logo: React.FC<LogoProps> = ({
         alt="Introvirght - Digital Diary for Deep Thinkers"
         className={cn(
           sizeClass,
-          'object-contain select-none',
-          'transition-all duration-500 ease-out',
-          animated && [
-            'group-hover:scale-110',
-            'group-hover:rotate-2',
-            'group-hover:drop-shadow-2xl',
-            'active:scale-95',
-          ],
-          isVAPIActive && 'drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]',
-          !isVAPIActive && 'drop-shadow-lg',
+          'object-contain logo select-none relative z-10',
+          'transition-all duration-300 ease-out',
+          'min-h-16 min-w-48', // Force minimum size
+          animated && 'hover:brightness-110',
+          isVAPIActive && 'brightness-110 contrast-110',
+          'drop-shadow-sm',
         )}
         draggable={false}
         loading="eager"
         style={{
-          filter: isVAPIActive
-            ? 'drop-shadow(0 0 8px rgba(59, 130, 246, 0.4))'
-            : 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))',
+          imageRendering: 'crisp-edges',
+          filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.1))',
+          width: '100%',
+          maxWidth: '240px', // Allow it to be much wider
+          height: 'auto',
         }}
       />
-      {animated && (
-        <div className={cn(
-          'absolute inset-0 rounded-full opacity-0',
-          'group-hover:opacity-100 transition-opacity duration-500',
-          'bg-gradient-to-r from-blue-500/10 via-blue-400/20 to-blue-300/10',
-          'blur-xl -z-10 scale-150'
-        )} />
-      )}
     </div>
   );
 

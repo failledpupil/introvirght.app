@@ -3,7 +3,7 @@ import { Logo, type LogoProps } from './Logo';
 import { cn } from '../../utils/cn';
 
 export interface AnimatedLogoProps extends Omit<LogoProps, 'animated'> {
-  animation?: 'fade-in' | 'slide-up' | 'scale' | 'bounce' | 'float' | 'glow' | 'shimmer' | 'pulse';
+  animation?: 'fade-in' | 'slide-up' | 'scale' | 'bounce' | 'paper-turn' | 'ink-spread' | 'entrance' | 'glow';
   delay?: number;
   duration?: number;
   loop?: boolean;
@@ -12,13 +12,13 @@ export interface AnimatedLogoProps extends Omit<LogoProps, 'animated'> {
 
 const animationClasses = {
   'fade-in': 'animate-fade-in',
-  'slide-up': 'animate-slide-up',
+  'slide-up': 'animate-entry-appear',
   'scale': 'animate-bounce-in',
-  'bounce': 'animate-bounce',
-  'float': 'animate-float',
-  'glow': 'animate-glow',
-  'shimmer': 'animate-shimmer',
-  'pulse': 'animate-pulse-subtle',
+  'bounce': 'animate-logo-bounce',
+  'paper-turn': 'animate-paper-turn',
+  'ink-spread': 'animate-ink-spread',
+  'entrance': 'animate-logo-entrance',
+  'glow': 'animate-logo-glow',
 };
 
 /**
@@ -70,14 +70,12 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
     <div
       key={animationKey}
       className={cn(
-        'inline-block transform-gpu',
+        'inline-block',
         isAnimating && animationClass,
-        'transition-all duration-300',
         className
       )}
       style={{
         animationDuration: `${duration}ms`,
-        willChange: 'transform, opacity',
       }}
     >
       <Logo {...logoProps} animated />
