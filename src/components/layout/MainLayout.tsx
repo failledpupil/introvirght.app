@@ -1,7 +1,6 @@
 import { useState, type ReactNode } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { cn } from '../../utils/cn';
-import { AnimatedLogo } from '../branding/AnimatedLogo';
 import { ThemeSelector } from '../ui';
 import { CompanionWidget } from '../ai/CompanionWidget';
 import { useDiaryStore } from '../../stores/diaryStore';
@@ -31,16 +30,9 @@ export function MainLayout({ children, userPreferences }: MainLayoutProps) {
 
   const navigationItems: NavigationItem[] = [
     {
-      id: 'dashboard',
-      label: 'Dashboard',
-      path: '/',
-      icon: '🏠',
-      description: 'Your writing home'
-    },
-    {
       id: 'write',
       label: 'Write',
-      path: '/write',
+      path: '/',
       icon: '✍️',
       description: 'Start writing'
     },
@@ -50,13 +42,6 @@ export function MainLayout({ children, userPreferences }: MainLayoutProps) {
       path: '/entries',
       icon: '📖',
       description: 'Read past entries'
-    },
-    {
-      id: 'analytics',
-      label: 'Insights',
-      path: '/analytics',
-      icon: '📊',
-      description: 'View your patterns'
     },
     {
       id: 'search',
