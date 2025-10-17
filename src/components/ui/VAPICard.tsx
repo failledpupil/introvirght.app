@@ -23,12 +23,19 @@ export const VAPICard: React.FC<VAPICardProps> = ({
   const dataAttributes = getVAPIDataAttributes(config);
 
   return (
-    <div 
-      className={cardClasses} 
+    <div
+      className={`${cardClasses} transition-all duration-300 ${
+        hoverable ? 'hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer' : ''
+      }`}
       {...dataAttributes}
       {...props}
     >
-      {children}
+      <div className="relative">
+        {hoverable && (
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-blue-500/5 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg pointer-events-none" />
+        )}
+        {children}
+      </div>
     </div>
   );
 };

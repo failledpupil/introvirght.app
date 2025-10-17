@@ -237,6 +237,89 @@
     }
   }
   
+  /* Smooth Animations */
+  .animate-slide-up {
+    animation: slideUp 0.5s var(--ease-smooth) forwards;
+  }
+
+  .animate-slide-in-from-bottom-4 {
+    animation: slideInFromBottom 0.6s var(--ease-smooth) forwards;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulseSubtle 2s var(--ease-smooth) infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInFromBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulseSubtle {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
+    }
+    50% {
+      filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.8));
+    }
+  }
+
   /* Essential utility classes */
   .line-clamp-2 {
     display: -webkit-box;
@@ -244,58 +327,24 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.1);
     border-radius: 3px;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.3);
     border-radius: 3px;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.5);
   }
-}/* Enha
-nced Logo Styles */
-.logo {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Enhanced logo effects */
-.vapi-logo-glow {
-  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
-}
-
-/* Logo hover effects */
-.logo:hover {
-  transform: scale(1.02);
-  transition: transform 0.2s ease-in-out;
-}
-
-/* Logo container for better positioning */
-.logo-container {
-  @apply flex items-center justify-center;
-  @apply p-1 rounded-lg;
-  @apply transition-all duration-200;
-}
-
-.logo-container:hover {
-  @apply bg-gray-50 dark:bg-gray-800/50;
-}/* Premi
-um Logo Enhancements */
-.logo:hover {
-  transform: scale(1.05) rotate(1deg);
-  filter: brightness(1.1) contrast(1.1) drop-shadow(0 8px 16px rgba(0,0,0,0.2));
 }
 
 .logo-container:hover {

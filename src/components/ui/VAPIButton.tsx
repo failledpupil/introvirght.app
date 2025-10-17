@@ -24,8 +24,14 @@ export const VAPIButton: React.FC<VAPIButtonProps> = ({
   const buttonClasses = getVAPIButtonClasses(variant, size, isActive, className);
 
   return (
-    <button className={buttonClasses} {...props}>
-      {children}
+    <button
+      className={`${buttonClasses} group relative overflow-hidden`}
+      {...props}
+    >
+      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+      <span className="relative z-10 flex items-center justify-center gap-2">
+        {children}
+      </span>
     </button>
   );
 };

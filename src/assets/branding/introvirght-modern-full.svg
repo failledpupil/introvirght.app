@@ -1,0 +1,59 @@
+<svg width="500" height="120" viewBox="0 0 500 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brain-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+    <filter id="logo-glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Icon -->
+  <g transform="translate(60, 60)" filter="url(#logo-glow)">
+    <path d="M -25 -15 Q -30 -25, -20 -30 Q -10 -35, 0 -32 Q 10 -35, 20 -30 Q 30 -25, 25 -15 Q 28 -5, 25 5 Q 30 15, 20 22 Q 10 28, 0 26 Q -10 28, -20 22 Q -30 15, -25 5 Q -28 -5, -25 -15 Z"
+          fill="url(#brain-grad)"
+          stroke="#1e3a8a"
+          stroke-width="2"/>
+    <circle cx="-15" cy="-10" r="3" fill="#60a5fa" opacity="0.8"/>
+    <circle cx="15" cy="-10" r="3" fill="#60a5fa" opacity="0.8"/>
+    <circle cx="-12" cy="8" r="3" fill="#60a5fa" opacity="0.8"/>
+    <circle cx="12" cy="8" r="3" fill="#60a5fa" opacity="0.8"/>
+    <circle cx="0" cy="-5" r="3" fill="#60a5fa" opacity="0.8"/>
+    <line x1="-15" y1="-10" x2="0" y2="-5" stroke="#93c5fd" stroke-width="1.5" opacity="0.6"/>
+    <line x1="15" y1="-10" x2="0" y2="-5" stroke="#93c5fd" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="-5" x2="-12" y2="8" stroke="#93c5fd" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="-5" x2="12" y2="8" stroke="#93c5fd" stroke-width="1.5" opacity="0.6"/>
+    <path d="M -5 18 L 0 28 L 5 18 Z" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="1"/>
+  </g>
+  <circle cx="60" cy="60" r="55" fill="none" stroke="url(#brain-grad)" stroke-width="3" opacity="0.3"/>
+
+  <!-- Wordmark -->
+  <text x="140" y="70"
+        font-family="'Inter', system-ui, -apple-system, sans-serif"
+        font-size="42"
+        font-weight="700"
+        fill="url(#text-grad)"
+        letter-spacing="-1">
+    Introvirght
+  </text>
+
+  <text x="142" y="95"
+        font-family="'Inter', system-ui, -apple-system, sans-serif"
+        font-size="14"
+        font-weight="400"
+        fill="#64748b"
+        letter-spacing="2">
+    DIGITAL DIARY FOR DEEP THINKERS
+  </text>
+</svg>
