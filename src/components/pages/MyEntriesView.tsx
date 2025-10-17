@@ -1,28 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { useDiaryStore } from '../../stores/diaryStore';
 
-const SearchView: React.FC = () => {
-  const { searchEntries } = useDiaryStore();
-  const [query, setQuery] = useState('');
-
-  const filteredEntries = searchEntries(query);
+const MyEntriesView: React.FC = () => {
+  const { entries } = useDiaryStore();
 
   return (
     <div className="bg-aged-paper p-8 md:p-12 rounded-lg shadow-paper max-w-4xl mx-auto my-8 font-serif">
-      <h1 className="text-4xl font-script text-fountain-pen-blue mb-8">Search Entries</h1>
-      <div className="mb-8">
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className="w-full p-4 border border-notebook-lines rounded-lg bg-cream-paper focus:outline-none focus:ring-2 focus:ring-fountain-pen-blue"
-          placeholder="Search by content, tags, or emotions..."
-        />
-      </div>
+      <h1 className="text-4xl font-script text-fountain-pen-blue mb-8">My Entries</h1>
       <div className="space-y-6">
-        {filteredEntries.map((entry) => (
+        {entries.map((entry) => (
           <div key={entry.id} className="bg-cream-paper p-6 rounded-lg shadow-paper">
             <h2 className="text-2xl font-script text-fountain-pen-blue">
               {format(new Date(entry.date), 'MMMM d, yyyy')}
@@ -44,4 +32,4 @@ const SearchView: React.FC = () => {
   );
 };
 
-export default SearchView;
+export default MyEntriesView;
